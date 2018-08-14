@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script type="text/javascript" src=js.js></script>
+
+	
+	<title>PACWOMAN</title>
+    <link rel="stylesheet" href="style.css">
+	
+	<link rel="icon" type="image/png"
+     href="mspacman_button.png" />
+	</head>
+    
+<body>
+	
+<header>
+	
+	<section id="upmenu" class="section" >
+			
+		  <nav>
+
+                        <div class="menu-icon">
+                              <i class="fa fa-bars fa-2x"></i>
+                        </div>
+
+                        <div class="logo">
+                              <img src=pp.png width=300 height=60></img>
+                        </div>		
+                        <div class="menu">
+                              <ul>
+									
+                                    <li><a href="#New Game" onclick="newGame()" >NEW GAME</a></li>
+									<li><a href="#about" onclick="about()" >ABOUT</a></li>
+									<li><a href="#regs" id="regs" onclick="regClick()" >SIGN UP</a></li>
+									<li><a href="#in" onclick="log()" >LOG IN</a></li>
+									<li><a href="#out" onclick="logout()" >LOG OUT</a></li>
+                              </ul>
+                        </div>
+           </nav>
+		   
+		   <!-- The Modal -->
+			<div id="myModal" class="modal">
+
+			  <!-- Modal content -->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <span class="close" onclick="aboutClose()">&times;</span>
+				  <h2>About</h2>
+				</div>
+				<div class="modal-body">
+				<br/>
+				 <p>Maya Kremer-204219976</p>
+				  <p>I used JQuery for form validation.</p>
+				  <p>The main difficulty on this exercise was to get to know Canvas element.</p>
+				  <br/>
+				</div>
+				<div class="modal-footer">
+				  <h3>&copy; All rights reserved.</h3>
+				</div>
+			  </div>
+
+			</div>
+		   
+
+
+	</section>
+</header>
+
+	<section id="content" class="section">	
+	
+
+	
+		<div id="game" >
+		
+		<form id="formGame" name="regis">
+			  <div class="container">
+			
+			<br/>
+			 <div class="slider">
+			 Num of Balls:&nbsp;&nbsp;&nbsp;&nbsp;             
+			  <input type = "range" min="50" max="90" onchange="rangevalue.value=value"/>
+				<output id="rangevalue">70</output>
+			  </div>
+			 
+
+			
+			<br/>		
+			Game Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<select id="time">
+			  <option value="60">60 sec</option>
+			  <option value="90">90 sec</option>
+			  <option value="120">120 sec</option>
+			  <option value="150">150 sec</option>
+			</select>
+			<br/>	
+			<br/>		
+
+			Num of Ghosts:&nbsp;
+			<select id="numGhost">
+			  <option value="ghost1">1</option>
+			  <option value="ghost2">2</option>
+			  <option value="ghost3">3</option>
+			</select>
+			<br/>					  
+		 <br/>		
+		 <button type="button" class="gameStart" id="startbtn"  onclick="Start()">Play Game</button>
+		 
+		 </div>
+		 </form>
+		
+		
+		</div>
+		
+		
+		
+		<img id="g1" width="5" height="5" src="g11.png" >
+		<img id="g2" width="5" height="5"  src="g22.png"  >
+		<img id="g3" width="5" height="5"  src="g33.png" >
+		<img id="sushi" width="5" height="5"  src="humb.png"  >
+			<img id="chip" width="0" height="0"  src="chip.png" >
+		
+		
+		<div id="board" >
+			<p id="hellow"></p>
+			<table>
+			  <tr>
+				    <td colspan="3"></br></td>
+				    </tr>
+				  <tr>
+					 <td colspan="3">SCORE:</td>
+				 </tr>
+				  <tr>
+					 <td colspan="3"><input id="lblScore" type="text" readonly></td>
+				  </tr>
+				  <tr>
+					 <td colspan="3">TIME:</td>
+				 </tr>
+				  <tr>
+					 <td colspan="3"><input id="lblTime" type="text" readonly></td>
+				  </tr>
+				  
+				  <tr>
+					<td><img id="h1" width="30" height="30" src="heart1.png" ></td>
+					<td><img id="h2" width="30" height="30"  src="heart1.png" ></td> 
+					<td><img id="h3"  width="30" height="30" src="heart1.png"  ></td>
+				  </tr>
+				
+				  <tr>
+					 <td colspan="3">5 POINTS:</td>
+				 </tr>
+				  <tr>
+					 <td colspan="3"><svg height="40" width="40"><circle cx="20" cy="20" r="5" stroke="black" stroke-width="0" fill="#00ffff" /></svg></td>
+				 </tr>
+				  <tr>
+					 <td colspan="3">15 POINTS:</td>
+				 </tr>
+				   <tr>
+					 <td colspan="3"><svg height="40" width="40"><circle cx="20" cy="20" r="8" stroke="black" stroke-width="0" fill="#ff8080" /></svg></td>
+				 </tr>
+				   <tr>
+					 <td colspan="3">25 POINTS:</td>
+				 </tr>
+				   <tr>
+					 <td colspan="3"><svg height="40" width="40"><circle cx="20" cy="20" r="11" stroke="black" stroke-width="0" fill="#ff00ff" /></svg></td>
+				 </tr>
+				  <tr>
+					 <td colspan="3">30 POINTS:</td>
+				 </tr>
+				  <tr>
+				    <td colspan="3"><img id="chip2"  width="30" height="40" src="chip.png"  ></td>
+				  </tr>
+				  <tr>
+					 <td colspan="3">50 POINTS:</td>
+				 </tr>
+				  <tr>
+				    <td colspan="3"><img id="humb3"  width="40" height="40" src="humb.png"  ></td>
+				  </tr>
+			</table>
+		
+		
+		
+		
+			<canvas id="canvas" height="558" width="877"></canvas>
+				
+			<br/>
+	
+		</div>
+		
+		
+		
+		<div id="login" >
+				<form id="formLogin">
+
+				  <div class="container">
+					<label for="uname"><b>Username</b></label>
+					<input type="text" placeholder="Enter Username" id="uname" required>
+
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" id="psw" required>
+						
+					<button type="button" onclick="login()">Login</button>
+				
+				  </div>
+
+				  <div class="container2" >
+					<button type="button" class="cancelbtn" onclick="cancelLogin()">Cancel</button>
+				  </div>
+				</form>		
+				
+				<div id="snow">
+				</div>
+		</div>
+		
+		
+		<div id="registration">
+			<form id="formReg" name="regis2"  action="javascript:reg();">
+			  <div class="container">
+			
+				<label for="usname"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" id="username" name= "username" required>
+				
+				<label for="fname"><b>First Name</b></label>
+				<input type="text" placeholder="Enter First Name" id="first" name="first" required>
+				
+				<label for="lname"><b>Last Name</b></label>
+				<input type="text" placeholder="Enter Last Name" id="last" name="last" required>
+				
+				<label for="bday"><b>Birth Day</b></label>
+				<input id="birthday" type="date" max="2000-04-14" min="1918-04-14" name="birthday">
+		
+				<label for="email"><b>Email</b></label>
+				<input type="email" placeholder="Enter Email" id="email" name="email" required>
+
+				<label for="psword"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" id="password" name="password" required>
+				
+				<button type="submit" class="signupbtn">Sign Up</button>
+				</div>
+				<div class="container2">
+				  <button type="button" class="cancelbtn"  onclick="canelReg()">Cancel</button>
+				 
+				
+			  </div>
+			</form>
+			
+			<div id="snow">
+
+			</div>
+		</div>
+		
+		
+		
+		<div id="welcome">
+			<img id="pack" width="750" height="150" src="pp.png">
+				<button id="lo" class="loginbtn" onclick="showhide('welcome','login')">LOGIN</button>
+			
+			<button id="re" class="regbtn" onclick="showhide('welcome','registration')">REGISTRATION</button>
+			<img id="pc" width="300" height="300"  src="pc.png"  >
+		
+					
+		<div id="snow">
+
+		</div>
+    </div>
+		
+
+		
+		
+		
+</section>
+
+
+<footer>
+	<p id="stay">Stay in Touch</p>
+		<p id="ourmail">pacwoman@gamil.com</p>	
+</footer>		
+		
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
